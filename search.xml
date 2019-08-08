@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[manjaro安装mariadb流程及遇到的问题]]></title>
+    <url>%2Fmanjaro%E5%AE%89%E8%A3%85mariadb%E6%B5%81%E7%A8%8B%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[官网教程地址)步骤 安装mariadb 12sudo pacman -S mariadb# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql 启动mariadb 1sudo systemctl start mariadb 更改root密码 1sudo mysql 12FLUSH PRIVILEGES;ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password'; 1sudo systemctl restart mariadb 问题 问题描述： Table ‘mysql.servers’ doesn’t exist 此类table不存在问题 解决办法： 初始化表 12cd /usrsudo mysql_install_db --user=mysql --ldata=/var/lib/mysql/]]></content>
+      <categories>
+        <category>mariadb</category>
+      </categories>
+      <tags>
+        <tag>manjaro</tag>
+        <tag>mariadb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[nacos使用笔记]]></title>
     <url>%2Fnacos%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[nacos官网（快速开始） https://nacos.io/zh-cn/docs/quick-start.html 安装步骤 github获取最新版本 https://github.com/alibaba/nacos/releases 解压，使用 Linux/Unix/Mac启动命令(standalone代表着单机模式运行，非集群模式):12&gt; sh startup.sh -m standalone&gt; 停止命令12&gt; sh shutdown.sh&gt; 服务注册12&gt; curl -X POST 'http://127.0.0.1:8848/nacos/v1/ns/instance?serviceName=nacos.naming.serviceName&amp;ip=20.18.7.10&amp;port=8080'&gt; 服务发现12&gt; curl -X GET 'http://127.0.0.1:8848/nacos/v1/ns/instance/list?serviceName=nacos.naming.serviceName'&gt; 发布配置12&gt; curl -X POST "http://127.0.0.1:8848/nacos/v1/cs/configs?dataId=nacos.cfg.dataId&amp;group=test&amp;content=HelloWorld"&gt; 获取配置12&gt; curl -X GET "http://127.0.0.1:8848/nacos/v1/cs/configs?dataId=nacos.cfg.dataId&amp;group=test"&gt; web配置 打开 localhost:8848/nacos 即可 遇到问题 Cannot create PoolableConnectionFactory错误信息：123456789101112&gt; Caused by: java.lang.RuntimeException: load schema.sql error.org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Failed to create database &apos;/data/nacos/data/derby-data&apos;, see the next exception for details.)&gt; at com.alibaba.nacos.config.server.service.LocalDataSourceServiceImpl.reload(LocalDataSourceServiceImpl.java:110)&gt; at com.alibaba.nacos.config.server.service.LocalDataSourceServiceImpl.init(LocalDataSourceServiceImpl.java:94)&gt; at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&gt; at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&gt; at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&gt; at java.lang.reflect.Method.invoke(Method.java:498)&gt; at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:363)&gt; at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:307)&gt; at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:136)&gt; ... 70 common frames omitted&gt; 解决方法： 删除报错信息中的’/data/nacos/data/derby-data’目录，重新启动。]]></content>
