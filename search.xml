@@ -71,6 +71,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[win10中docker的安装和配置]]></title>
+    <url>%2Fwindows10%E4%B8%ADdocker%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[前置条件 本人使用 ，个人觉得很好用的一款Windows包管理工具；]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[springboot + slf4j + logback 配置]]></title>
     <url>%2Fspringboot-log-config%2F</url>
     <content type="text"><![CDATA[springboot + slf4j + logback 配置，随手记一下。 spring-boot-starter包已经依赖了logback和slf4j,所以此处不需要再添加其他依赖。如下图： idea打开jar包依赖关系图步骤如下图所示： 配置文件优先级：logback-spring.xml &gt; logback-test.xml &gt; logback.xml logback-spring.xml123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;configuration&gt; &lt;property name="LOG_HOME" value="/logs/spider"/&gt; &lt;property name="myAppName" value="spider"/&gt; &lt;!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径--&gt; &lt;!-- 控制台输出 --&gt; &lt;appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"&gt; &lt;encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt; &lt;!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符--&gt; &lt;pattern&gt;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n&lt;/pattern&gt; &lt;/encoder&gt; &lt;/appender&gt; &lt;!-- 按照每天生成日志文件 --&gt; &lt;appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"&gt; &lt;filter class="ch.qos.logback.classic.filter.ThresholdFilter"&gt; &lt;level&gt;WARN&lt;/level&gt; &lt;/filter&gt; &lt;rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"&gt; &lt;!--日志文件输出的文件名--&gt; &lt;FileNamePattern&gt;$&#123;LOG_HOME&#125;/log_%d&#123;yyyy-MM-dd&#125;.log&lt;/FileNamePattern&gt; &lt;!--日志文件保留天数--&gt; &lt;MaxHistory&gt;30&lt;/MaxHistory&gt; &lt;/rollingPolicy&gt; &lt;encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt; &lt;charset&gt;UTF-8&lt;/charset&gt; &lt;!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符--&gt; &lt;pattern&gt;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n&lt;/pattern&gt; &lt;/encoder&gt; &lt;!--日志文件最大的大小--&gt; &lt;triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"&gt; &lt;MaxFileSize&gt;10MB&lt;/MaxFileSize&gt; &lt;/triggeringPolicy&gt; &lt;/appender&gt; &lt;!-- 日志输出级别 --&gt; &lt;root level="WARN"&gt; &lt;appender-ref ref="STDOUT"/&gt; &lt;appender-ref ref="FILE"/&gt; &lt;/root&gt; &lt;!-- 开发、测试环境 --&gt; &lt;springProfile name="dev,test"&gt; &lt;logger name="com.spider.modules.spider.dao" level="DEBUG"/&gt; &lt;logger name="com.spider.modules.business.dao" level="DEBUG"/&gt; &lt;logger name="org.springframework.web" level="INFO"/&gt; &lt;logger name="org.springboot.sample" level="INFO"/&gt; &lt;logger name="com.spider" level="INFO"/&gt; &lt;/springProfile&gt; &lt;!-- 生产环境 --&gt; &lt;springProfile name="prod"&gt; &lt;logger name="org.springframework.web" level="ERROR"/&gt; &lt;logger name="org.springboot.sample" level="ERROR"/&gt; &lt;logger name="com.spider" level="ERROR"/&gt; &lt;/springProfile&gt;&lt;/configuration&gt;]]></content>
@@ -81,18 +93,6 @@
         <tag>springboot</tag>
         <tag>slf4j</tag>
         <tag>logback</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[win10中docker的安装和配置]]></title>
-    <url>%2Fwindows10%E4%B8%ADdocker%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[前置条件 本人使用 ，个人觉得很好用的一款Windows包管理工具；]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
